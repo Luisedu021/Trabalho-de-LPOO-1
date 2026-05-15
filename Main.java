@@ -10,8 +10,9 @@ public final class Main
   {
     try
     {
+      //criando um objeto aqui
       SymbolTable st = new SymbolTable();
-
+  //adicionando classe
       st.addClass("String");
 
       lpoo.stable.Class clazz = st.addClass("Test");
@@ -29,7 +30,7 @@ public final class Main
     }
     catch (DuplicateSymbolException e)
     {
-      // insert your code here
+      System.out.println("Erro semântico: " + e.getMessage());
     }
   }
 
