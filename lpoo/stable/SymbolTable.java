@@ -4,23 +4,22 @@ import java.util.*;
 
 /**
  *
- * @author // put your name(s) here
+ * @Luis Eduardo Lopes dos Santos,Guilherme Escobar,Otávio Augusto
  */
 public class SymbolTable
 {
+
+
   public Class addClass(String name)
-    throws DuplicateSymbolException
-          Class novaClasse = new Class(name);
+    throws DuplicateSymbolException {
+    Class novaClasse = new Class(name);
 
-  Class novaClasse = new Class(name);
-
-  this.GlobalScope.AddClass(novaClasse);
+    this.globalScope.addClass(novaClasse);
 
     return novaClasse;
-
-    // insert your code here
-    return null;
   }
+
+
 
   public Class findClass(String name)
   {
@@ -30,19 +29,17 @@ public class SymbolTable
 
   public void openClass(Class clazz)
   {
-    // insert your code here
-  }
-
-  public void closeClass()
-  {
-    // insert your code here
+    this.currentClass = clazz;
   }
 
   public Method addMethod(String name, ParameterList parameters)
     throws DuplicateSymbolException
   {
-    // insert your code here
-    return null;
+    Method novoMetodo = new Method(name, parameters);
+     if(this.currentClass != null){
+       this.currentClass.addMethod(novoMetodo);
+     }
+    return novoMetodo;
   }
 
   public List<Method> findMethods(String name, Class clazz)
@@ -56,15 +53,15 @@ public class SymbolTable
     // insert your code here
     return null;
   }
-
+//msm lógica do openClass
   public void openMethod(Method method)
   {
-    // insert your code here
+    this.currentMethod = method;
   }
 
   public void closeMethod()
   {
-    // insert your code here
+    this.currentMethod = null;
   }
 
   public void openBlock()
@@ -85,17 +82,18 @@ public class SymbolTable
 
   }
 
-  private GlobalScope globalScope = new GLobalScope();
+  private GlobalScope globalScope = new GlobalScope();
   private Class currentClass = null;
   private Method currentMethod = null;
 
+  //ponteiro aqui nesse caso vai apontar para a classe "atual" usando o current clazz q declarei no openclass la em cima
   public void opeClass(Class clazz) {
     this.currentClass = clazz;
   }
 
   public void closeClass(){
-    this.currentClass = null; // se sair da classe,volta para o escopo global
+    this.currentClass = null; // se sair da classe,volta para o escopo global apontando para nada(null)
   }
-  // insert your code here
+
 
 }; // SymbolTable

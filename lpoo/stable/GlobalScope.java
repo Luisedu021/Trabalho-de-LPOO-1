@@ -14,7 +14,7 @@ public class GlobalScope
   public GlobalScope(){
     this.classes = new TreeMap<>();
   }
-  public void Class addClass(Class novaClasse) throws DuplicateSymbolException {
+  public void addClass(Class novaClasse) throws DuplicateSymbolException {
 
     if(this.classes.containsKey(novaClasse.getName())){
       //se existir

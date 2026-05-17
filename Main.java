@@ -1,37 +1,31 @@
 import lpoo.stable.*;
 
-/**
- *
- * @author // put your name(s) here
- */
-public final class Main
-{
-  public static void main(String[] args)
-  {
-    try
-    {
-      //criando um objeto aqui
+public final class Main {
+  public static void main(String[] args) {
+    try {
       SymbolTable st = new SymbolTable();
-  //adicionando classe
+
+      System.out.println("Adicionando String...");
       st.addClass("String");
 
+      System.out.println("Adicionando e abrindo Test...");
       lpoo.stable.Class clazz = st.addClass("Test");
-
       st.openClass(clazz);
 
-      Method method = st.addMethod("main", null);
-
+      // Comentando
+       Method method = st.addMethod("main", null);
       st.openMethod(method);
-      // add blocks, variables, etc.
-      st.closeMethod();
-      st.closeClass();
-      // insert your code here
 
-    }
-    catch (DuplicateSymbolException e)
-    {
-      System.out.println("Erro semântico: " + e.getMessage());
+      //add depois blocos,variaveis,etc.
+       st.closeMethod();
+
+      System.out.println("Fechando Test...");
+      st.closeClass();
+
+      System.out.println("Teste concluido com sucesso! Classes adicionadas na Tabela.");
+
+    } catch (DuplicateSymbolException e) {
+      System.out.println("Erro semântico: Símbolo Duplicado!");
     }
   }
-
-}; // Main
+}
